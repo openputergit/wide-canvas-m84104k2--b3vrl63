@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict the Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .stock-chart {
+            width: 100%;
+            height: 60px;
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
+        <div class="flex items-center space-x-2">
+            <i class="bi bi-graph-up-arrow text-indigo-600 text-xl"></i>
+            <span class="font-semibold text-xl">Predict</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="#" class="text-gray-600 hover:text-gray-900">Explore</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">Find It</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">Learn</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">Help</a>
+            <button class="px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
+                Sign In
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative h-[400px]">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" 
+                 alt="Market background" 
+                 class="w-full h-full object-cover brightness-50">
+        </div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Predict the Market</h1>
+            <p class="text-xl mb-8">Stay ahead with real-time market insights.</p>
+            <button class="px-6 py-3 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors text-lg font-medium">
+                Get Started
+            </button>
+        </div>
+    </div>
+
+    <!-- Featured Stocks Section -->
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-semibold mb-8">Featured Stocks</h2>
+        <p class="text-gray-600 mb-8">Explore the top performing stocks in the market today</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Stock Card 1 -->
+            <div class="p-6 border rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-semibold">Apple Inc.</h3>
+                        <p class="text-gray-600">Price: $180.50</p>
+                        <p class="text-green-600">Change: +1.5%</p>
+                    </div>
+                    <div class="stock-chart"></div>
+                </div>
+            </div>
+
+            <!-- Stock Card 2 -->
+            <div class="p-6 border rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-semibold">Tesla Inc.</h3>
+                        <p class="text-gray-600">Price: $815.25</p>
+                        <p class="text-green-600">Change: +2.3%</p>
+                    </div>
+                    <div class="stock-chart"></div>
+                </div>
+            </div>
+
+            <!-- Stock Card 3 -->
+            <div class="p-6 border rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-semibold">Amazon.com</h3>
+                        <p class="text-gray-600">Price: $3245.80</p>
+                        <p class="text-green-600">Change: +0.8%</p>
+                    </div>
+                    <div class="stock-chart"></div>
+                </div>
+            </div>
+
+            <!-- Stock Card 4 -->
+            <div class="p-6 border rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-semibold">Google LLC</h3>
+                        <p class="text-gray-600">Price: $2756.90</p>
+                        <p class="text-red-600">Change: -0.5%</p>
+                    </div>
+                    <div class="stock-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Responsive navigation for mobile (hamburger menu)
+        const nav = document.querySelector('nav');
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
+        
+        function handleMobileNav(e) {
+            if (e.matches) {
+                const navItems = nav.querySelector('div:last-child');
+                navItems.classList.add('hidden', 'md:flex');
+                
+                const hamburger = document.createElement('button');
+                hamburger.innerHTML = '<i class="bi bi-list text-2xl"></i>';
+                hamburger.className = 'md:hidden';
+                hamburger.onclick = () => navItems.classList.toggle('hidden');
+                
+                nav.appendChild(hamburger);
+            }
+        }
+
+        mediaQuery.addListener(handleMobileNav);
+        handleMobileNav(mediaQuery);
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
